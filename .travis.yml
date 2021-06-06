@@ -1,3 +1,5 @@
+# continous integration
+
 sudo: required
 services:
   - docker
@@ -9,3 +11,17 @@ before_install:
 # -- --coverage is to exit from the result npm run test which does not exits by own when test is done
 script:
   - docker run -e CI=true saikrishna59/docker-travis-ci npm run test
+
+# continous deployment
+deploy:
+  provider: elasticbeanstalk
+  region: "ap-southeast-2"
+  app: "docker-travis-ci-cd"
+  env: "Dockertraviscicd-env"
+  bucket_name: "elasticbeanstalk-ap-southeast-2-450343607633"
+  # bucket_path is the path of the folder inside the s3 bucket where this project will be stored default is to use application name
+  bucket_path: "docker-travis-ci-cd"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
