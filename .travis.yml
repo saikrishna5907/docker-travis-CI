@@ -8,4 +8,4 @@ before_install:
 
 # -- --coverage is to exit from the result npm run test which does not exits by own when test is done
 script:
-  - docker -e CI=true run saikrishna59/docker-travis-ci npm run test
+  - docker run -e CI=true saikrishna59/docker-travis-ci npm run test
