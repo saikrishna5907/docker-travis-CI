@@ -19,7 +19,8 @@ deploy:
   app: "docker-travis-ci-cd"
   env: "Dockertraviscicd-env"
   bucket_name: "elasticbeanstalk-ap-southeast-2-450343607633"
-  # bucket_path is the path of the folder inside the s3 bucket where this project will be stored default is to use application name
+  # bucket_path is the path of the folder inside the s3 bucket where this project will be stored
+  # default is to use application name
   bucket_path: "docker-travis-ci-cd"
   on:
     branch: master
