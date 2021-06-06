@@ -1,0 +1,11 @@
+sudo: required
+services:
+  - docker
+
+# this is give commands which needs to be executed before tests are run for the application or before deploy the application
+before_install:
+  - docker build -t saikrishna59/docker-travis-ci -f Dockerfile.dev .
+
+# -- --coverage is to exit from the result npm run test which does not exits by own when test is done
+script:
+  - docker -e CI=true run saikrishna59/docker-travis-ci npm run test -- --coverage
